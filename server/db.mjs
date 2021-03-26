@@ -16,3 +16,13 @@ export const getContacts = async () => (
     await db.any('SELECT * FROM contacts')
 );
 
+// add
+export const addContact = async (body) => (
+    await db.oneOrNone('INSERT INTO contacts'
+        + ' (first_name, last_name, phone_number, email) VALUES '
+        + ' (${first_name}, ${last_name}, ${phone_number}, ${email})'
+        + ' ON CONFLICT DO NOTHING',
+        body
+    )
+)
+

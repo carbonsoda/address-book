@@ -19,3 +19,14 @@ app.get('/contacts', async (req, res) => {
     db.getContacts().then(contacts => res.json(contacts));
 })
 
+app.post('/contacts', async (req, res) => {
+    const body = req.body;
+    const contact = await db.addContact(body)
+        .catch(e => console.error(e.stack));
+    
+    if (contact) {
+        res.status(201).json(contact);
+    }
+
+    res.status(400).json({error: 'Phone number already exists'});
+})
