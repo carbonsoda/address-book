@@ -12,5 +12,7 @@ const db = pgp()({
     port: "5432"
 })
 
-
+export const getContacts = async () => (
+    await db.any('SELECT * FROM contacts')
+);
 
