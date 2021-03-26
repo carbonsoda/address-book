@@ -8,7 +8,7 @@ export default function SearchContacts({ allContacts }) {
 
     const searchContacts = (e) => {
         e.preventDefault();
-        console.log(allContacts.filter(contact => contact.last_name === searchLast));
+        setFoundContacts(allContacts.filter(contact => contact.last_name === searchLast));
     }
 
     const clearBtn = (e) => {
