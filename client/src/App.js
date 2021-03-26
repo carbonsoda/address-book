@@ -41,10 +41,17 @@ export default function App() {
 
   return (
     <div className="App">
-      <AddContact addContact={ addContact } />
-      <h2>Contacts List</h2>
-      <ContactsList allContacts={ allContacts } deleteContact={ deleteContact } deleteEnabled={ true } />
-      <SearchContacts allContacts={ allContacts } />
+      <div className="container">
+        <AddContact addContact={ addContact } />
+      </div>
+      <div className="container main-list">
+        <ContactsList
+          allContacts={ allContacts } deleteContact={ deleteContact } deleteEnabled={ true }
+        />
+      </div>
+      <div className="container search-list">
+        <SearchContacts allContacts={ allContacts } />
+      </div>
     </div>
   );
 }

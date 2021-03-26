@@ -18,7 +18,10 @@ export default function AddContact({ addContact }) {
 
   return (
       <>
-          <form onSubmit={ submitForm }>
+          <form
+              onSubmit={ submitForm }
+              className="add-form"
+          >
               <label>First Name</label>
               <input type="text"
                   placeholder="John"
