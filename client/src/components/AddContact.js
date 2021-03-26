@@ -9,7 +9,12 @@ export default function AddContact({ addContact }) {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        // addContact(body);
+        if (first_name && last_name && phone_number && email) {
+            const body = { first_name, last_name, phone_number, email };
+            console.log(body);
+            
+            // addContact(body);
+        }
     }
 
   return (
