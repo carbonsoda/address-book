@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ContactsList from './components/ContactsList';
 import AddContact from './components/AddContact';
+import SearchContacts from './components/SearchContacts';
 
 export default function App() {
   const [allContacts, setContacts] = React.useState([]);
@@ -41,7 +42,9 @@ export default function App() {
   return (
     <div className="App">
       <AddContact addContact={ addContact } />
-      <ContactsList allContacts={ allContacts } deleteContact={ deleteContact } />
+      <h2>Contacts List</h2>
+      <ContactsList allContacts={ allContacts } deleteContact={ deleteContact } deleteEnabled={ true } />
+      <SearchContacts allContacts={ allContacts } />
     </div>
   );
 }
