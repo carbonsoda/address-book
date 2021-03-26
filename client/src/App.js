@@ -6,12 +6,26 @@ import AddContact from './components/AddContact';
 export default function App() {
   const [allContacts, setContacts] = React.useState([]);
 
+  const urlBase = 'http://localhost:5000';
+
   const addContact = async (body) => {
-    // fetch stuff here
+    fetch(`${urlBase}/contacts`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+      .then(res => res.json())
+      .then(() => getContacts())
+      .catch(e => console.error(e.stack));
   }
 
   const getContacts = async () => {
-    // fetch stuff here
+    fetch(`${urlBase}/contacts`)
+      .then(res => res.json())
+      .then(contacts => setContacts(contacts))
+      .catch(e => console.error(e.stack));
   }
 
   const deleteContact = async (id) => {
