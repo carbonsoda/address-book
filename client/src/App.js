@@ -32,11 +32,15 @@ export default function App() {
     // fetch stuff here
   }
 
+  React.useEffect(() => {
+    getContacts();
+  }, []);
+
 
   return (
     <div className="App">
       <AddContact addContact={ addContact } />
-      <ContactsList contacts={ allContacts } deleteContact={ deleteContact } />
+      <ContactsList allContacts={ allContacts } deleteContact={ deleteContact } />
     </div>
   );
 }
