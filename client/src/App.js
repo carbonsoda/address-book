@@ -29,7 +29,8 @@ export default function App() {
   }
 
   const deleteContact = async (id) => {
-    // fetch stuff here
+    console.log(id);
+    setContacts(allContacts.filter(contact => contact.id !== id));
   }
 
   React.useEffect(() => {
