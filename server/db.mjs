@@ -26,3 +26,10 @@ export const addContact = async (body) => (
     )
 )
 
+// delete
+export const deleteContact = async (id) => (
+    await db.none(
+        'DELETE FROM contacts WHERE id = $1',
+        [id]
+    )
+);

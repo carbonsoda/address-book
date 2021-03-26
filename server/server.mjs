@@ -16,7 +16,9 @@ app.listen(port, () => {
 
 
 app.get('/contacts', async (req, res) => {
-    db.getContacts().then(contacts => res.json(contacts));
+    db.getContacts()
+        .then(contacts => res.json(contacts))
+        .catch(e => console.error(e.stack));
 })
 
 app.post('/contacts', async (req, res) => {
@@ -29,4 +31,13 @@ app.post('/contacts', async (req, res) => {
     }
 
     res.status(400).json({error: 'Phone number already exists'});
+})
+
+app.delete('/contacts/id', async (req, res) => {
+    const id = req.params.id;
+
+    // assume was deleted
+    db.deleteContact(id)
+        .then(() => res.status(204).send('Contact deleted successfully'))
+        .catch(e => console.error(e.stack));
 })
