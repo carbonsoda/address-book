@@ -11,9 +11,8 @@ export default function AddContact({ addContact }) {
 
         if (first_name && last_name && phone_number && email) {
             const body = { first_name, last_name, phone_number, email };
-            console.log(body);
             
-            // addContact(body);
+            addContact(body);
         }
     }
 

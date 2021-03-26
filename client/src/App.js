@@ -17,7 +17,7 @@ export default function App() {
       body: JSON.stringify(body)
     })
       .then(res => res.json())
-      .then(() => getContacts())
+      .then(contact => getContacts(allContacts, contact))
       .catch(e => console.error(e.stack));
   }
 
