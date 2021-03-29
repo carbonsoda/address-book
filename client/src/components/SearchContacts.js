@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactsList from './ContactsList';
 
-
+// Used only if material theme isn't used
 export default function SearchContacts({ allContacts }) {
     const [searchLast, setSearchLast] = React.useState('');
     const [foundContacts, setFoundContacts] = React.useState([]);
