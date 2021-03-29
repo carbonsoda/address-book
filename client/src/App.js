@@ -6,11 +6,12 @@ import SearchContacts from './components/SearchContacts';
 
 export default function App() {
   const [allContacts, setContacts] = React.useState([]);
+  const [errors, setErrors] = React.useState('');
 
   const urlBase = 'http://localhost:5000';
 
   const addContact = async (body) => {
-    fetch(`${urlBase}/contacts`, {
+    await fetch(`${urlBase}/contacts`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -18,7 +19,14 @@ export default function App() {
       body: JSON.stringify(body)
     })
       .then(res => res.json())
-      .then(contact => getContacts(allContacts, contact))
+      .then(results => {
+        if (results.status === 400) {
+          setErrors(results.error);
+        } else {
+          setErrors('');
+          getContacts(results);
+        }
+      })
       .catch(e => console.error(e.stack));
   }
 
@@ -42,16 +50,16 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <AddContact addContact={ addContact } />
+        <AddContact addContact={ addContact } errors={ errors }/>
       </div>
-      <div className="container main-list">
+      <div className="main-list">
         <ContactsList
           allContacts={ allContacts } deleteContact={ deleteContact } deleteEnabled={ true }
         />
       </div>
-      <div className="container search-list">
+      {/* <div className="container search-list">
         <SearchContacts allContacts={ allContacts } />
-      </div>
+      </div> */}
     </div>
   );
 }

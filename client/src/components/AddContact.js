@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function AddContact({ addContact }) {
+export default function AddContact({ addContact, errors }) {
     const [first_name, setFirstName] = React.useState('');
     const [last_name, setLastName] = React.useState('');
     const [phone_number, setPhone] = React.useState('');
@@ -8,7 +8,7 @@ export default function AddContact({ addContact }) {
 
     const submitForm = async (e) => {
         e.preventDefault();
-
+        
         if (first_name && last_name && phone_number && email) {
             const body = { first_name, last_name, phone_number, email };
             
@@ -18,6 +18,7 @@ export default function AddContact({ addContact }) {
 
   return (
       <>
+          <h2>Add Contact </h2>
           <form
               onSubmit={ submitForm }
               className="add-form"
@@ -51,7 +52,7 @@ export default function AddContact({ addContact }) {
               />
               
               <button type="submit">Submit</button>
-
+              {errors}
           </form>
     
     </>
