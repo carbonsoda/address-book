@@ -7,11 +7,13 @@
 --charleston-green: hsla(202, 17%, 13%, 1);
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Exo&family=Public+Sans&family=Roboto&display=swap');
 body {
   background-color: hsla(202, 17%, 13%, 1);
 }
 
 .App {
+  font-family: 'Roboto';
   text-align: center;
   display: flex;
   flex-direction: row!important;
@@ -22,19 +24,27 @@ body {
 }
 
 .container {
-  background-color: hsla(300, 33%, 95%, 1);
-  flex: 1;
-}
-
-.add-form {
-  /* flex: 0.3; */
   border: 2px solid;
   border-radius: 25px;
   border-color: hsla(352, 19%, 84%, 1);
-  background-color: hsla(351, 51%, 93%, 1);
-  padding: 1.2em;
+  background-color: hsla(9, 79%, 76%, 1);
+  height: fit-content;
+}
+
+/* Delete contact button */
+button {
+  padding: .7em .7em;
+  border-radius: .5em;
+  border-color: hsla(9, 79%, 76%, 1);
+  background-color: hsla(15, 100%, 53%, 1);
+  color: white;
+}
+
+.add-form {
+  margin-top: -1rem;
+  padding: 0 1.2em 1.2em 1.2em;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   column-gap: 0.5rem;
   row-gap: 0.5rem;
   text-align: left;
@@ -42,7 +52,22 @@ body {
   justify-content: normal;
 }
 
+.add-form>input[type="text"] {
+  font-size: 1rem;
+}
 
-.main-list {}
+/* Add contact button */
 
-.search-list {}
+.add-form>button {
+  border-color: hsla(175, 37%, 35%, 1);
+  background: hsla(300, 33%, 95%, 1);
+  color: black;
+  font-size: .85em;
+  padding: .32em .5em;
+  border-radius: .5em;
+}
+
+.main-list {
+  flex: 2;
+  background-color: aliceblue;
+}
