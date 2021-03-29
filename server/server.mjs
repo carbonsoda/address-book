@@ -23,15 +23,21 @@ app.get('/contacts', async (req, res) => {
 
 app.post('/contacts', async (req, res) => {
     const body = req.body;
-    const contact = await db.addContact(body)
+
+    const exists = await db.checkPhone(body.phone_number)
         .catch(e => console.error(e.stack));
     
-    if (contact) {
-        res.status(201).json(contact);
+    if (exists) {
+        return res.status(404).send({ error: 'Phone number already exists' });
+    } else {
+        await db.addContact(body)
+            .then(contact =>
+                res.status(201).json(contact))
+            .catch(e => console.error(e.stack));
     }
 
-    res.status(400).json({error: 'Phone number already exists'});
 })
+
 
 app.delete('/contacts/:id', async (req, res) => {
     const id = req.params.id;

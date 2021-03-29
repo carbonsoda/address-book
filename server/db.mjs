@@ -13,17 +13,23 @@ const db = pgp()({
 })
 
 export const getContacts = async () => (
-    await db.any('SELECT * FROM contacts')
+    await db.any('SELECT * FROM contacts'
+    + ' ORDER BY id DESC')
 );
 
 // add
 export const addContact = async (body) => (
-    await db.oneOrNone('INSERT INTO contacts'
+    await db.one('INSERT INTO contacts'
         + ' (first_name, last_name, phone_number, email) VALUES '
         + ' (${first_name}, ${last_name}, ${phone_number}, ${email})'
-        + ' ON CONFLICT DO NOTHING',
+        + ' RETURNING *',
         body
     )
+)
+
+export const checkPhone = async (phone) => (
+    await db.oneOrNone('SELECT * FROM contacts'
+        + ' WHERE phone_number = $1', [phone])
 )
 
 // delete
