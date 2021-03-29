@@ -1,17 +1,10 @@
 
 <h1 align="center">Address book</h1>
 
-<!-- Status -->
 
-<h4 align="center"> 
-	🚧  Address Book Project Under construction...  🚧
-</h4> 
+## About
 
-
-
-## About ##
-
-Describe your project
+This app was made a part of Techtonica's curriculum, where the challenge was to make a PERN stack app in 7 hours. Aside from this readme, this repo is a result of what I wrote within that time.
 
 ## Features 
 
@@ -23,9 +16,9 @@ Describe your project
 
 
 
-### :white_check_mark: Requirements ##
+### Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
 ### :checkered_flag: Starting ##
 
@@ -36,13 +29,25 @@ $ git clone https://github.com/carbonsoda/addressbook
 # Access
 $ cd addressbook
 
+# Access server
+$ cd server
+
 # Install dependencies
-$ yarn
+$ npm install
 
-# Run the project
-$ yarn start
+# Run the server
+$ npm start
 
-# The server will initialize in the <http://localhost:3000>
+# Access client
+$ cd ../client
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm start
+
+# The app will initialize in the <http://localhost:3000>
 ```
 
 
